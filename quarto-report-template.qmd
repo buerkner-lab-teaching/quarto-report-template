@@ -1,0 +1,155 @@
+---
+title: "My Report"
+subtitle: "Created with a Quarto Template"
+author: "Marvin Schmitt"
+date: today
+date-format: long
+
+format: 
+  pdf:
+    fontsize: "12"
+    toc: true
+    number-sections: true
+    number-depth: 3
+    
+  revealjs: 
+    theme: default
+    smaller: true
+    scrollable: true
+    
+bibliography: bibliography.bib
+csl: apa.csl
+---
+
+\newpage
+
+## Introduction
+
+This Quarto template provides some default settings for a structured report.
+It is a proposed starting point with lots of room for customization.
+
+
+## Headings
+
+You have different levels of headings. `# Heading` is the top-level, followed by `## Second Level` and `### Third Level` sections.
+
+### Sub-heading
+
+This is a level 2 subsection
+
+#### Sub-sub-heading
+
+And this is a level 3 subsubsection.
+
+#### Sub-sub-heading without numbering {.unnumbered}
+
+You can suppress numbering in section headings via `{.unnumbered}`.
+
+## Formatting
+
+In a nutshell, you can use \LaTeX{} commands as well as standard **Markdown**.
+We refer to the Quarto and Markdown documentations for formatting details. 
+
+## Figures
+
+### Including figures from files
+
+![A very important plot that shows how different methods perform with increasing simulation budget $N$.](plots/plot_1.png){#fig-exampleplot}
+
+You can reference figures by adding an identifier with the prefix `#fig-` to the figure, and then using the `@`-prefix in the text. Here's a reference to @fig-exampleplot.
+
+
+### Generating figures directly from code
+
+We can use code blocks (e.g., `R` or `Python`) to create figures and directly output them to the document. Use the code block options (`#|`) to fine-tune the format.
+
+```{r}
+#| layout-ncol: 2
+#| fig-cap: 
+#|   - "My first plot"
+#|   - "The second plot"
+
+x = seq(-4, 8, length.out=100)
+
+plot(x, x**3, type="l")
+
+plot(x, sin(x), type="l")
+```
+
+## Enumerations and itemizations
+
+Here's an *unnumbered list* with structured thoughts:
+
+- with important aspects
+- and more
+    * and also a nested list
+    * with another item
+- and back to the first level
+
+Enumerations adhere to Markdown standards, so
+
+1. first argument
+2. second thought
+3. third remark
+
+creates a numbered list.
+
+## Citations
+
+There is rich history behind the Pythagoras' theorem [@saikia2013pythagoras].
+
+## Equations
+
+You can add \LaTeX{} equations with cross-reference labels,
+
+$$
+a^2 + b^2 = c^2,
+$${#eq-my-equation}
+
+where $a,b,c$ in @eq-my-equation are real-valued scalars and the label shall be prefixed with `{#eq-}`.
+
+## Rendering to report and presentation
+
+You can use a single `.qmd` file to generate both your case study report *and* the presentation.
+
+You can use conditional blocks to selectively make content visible in either the report or the presentation. You can find more information [on this Quarto website (Link)](https://posit.co/blog/building-a-reporting-infrastructure-with-quarto/).
+
+```
+::: {.content-visible unless-format="revealjs"}
+
+<content here.>
+
+:::
+```
+
+::: {.content-visible unless-format="revealjs"}
+
+This conditional block will not appear in your presentation, but it will show up in your report.
+
+:::
+
+Similarly, you can include blocks **only** in a specified format:
+
+```
+::: {.content-visible when-format="revealjs"}
+
+This will only appear in the presentation. 
+You can't see it in the rendered PDF. 
+
+This is just the printed source code for illustration.
+
+:::
+```
+
+::: {.content-visible when-format="revealjs"}
+
+This will only appear in the presentation. 
+You can't see it in the rendered PDF. 
+
+:::
+
+## References {.unnumbered}
+
+::: {#refs}
+:::
+
