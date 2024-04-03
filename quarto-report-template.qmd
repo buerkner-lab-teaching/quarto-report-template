@@ -64,10 +64,12 @@ You can reference figures by adding an identifier with the prefix `#fig-` to the
 We can use code blocks (e.g., `R` or `Python`) to create figures and directly output them to the document. Use the code block options (`#|`) to fine-tune the format.
 
 ```{r}
+#| fig-cap: Charts
+#| label: fig-plots
+#| fig-subcap:
+#|   - "$f(x)=x^3$"
+#|   - "$f(x)=\\sin(x)$"
 #| layout-ncol: 2
-#| fig-cap: 
-#|   - "My first plot"
-#|   - "The second plot"
 
 x = seq(-4, 8, length.out=100)
 
